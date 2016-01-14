@@ -1,19 +1,20 @@
-# UI�����ĵ�����Ȥ���б���ǩ
+# UI—第四弹，有趣的列表标签
 
-###һ�����ܣ�
-####1������������ĸ���б����顣
-####2������ʱ�������ǩ�ı仯��
-####3�����ݺ��ֵõ�Բ��ͷ��
+###一、功能：
+####1、按姓氏首字母将列表分组。
+####2、滑动时，分组标签的变化。
+####3、根据汉字得到圆形头像。
 
-###����΢�Ź��ںţ�
-**��ӭ��ע΢�Ź��ںţ��˽���ࡣ**
-**΢�Ź��ںţ�jike_android**
-![���ں�](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
+###二、微信公众号：
+**欢迎关注微信公众号，了解更多。**
+**微信公众号：jike_android**
 
-###����Ч��ͼ��
-![Ч��ͼ](https://github.com/wch0620/StatusBar/raw/master/gif/label.gif)
+![公众号](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
 
-###�ġ��ؼ����룺
+###三、效果图：
+![效果图](https://github.com/wch0620/LabelListView/raw/label_listview/gif/label.gif)
 
-####˯���������ٸ㡣����
+###四、关键代码：
+
+####睡觉，明天再搞。。。
 
