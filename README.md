@@ -1,20 +1,59 @@
-# UIâ€”ç¬¬å››å¼¹ï¼Œæœ‰è¶£çš„åˆ—è¡¨æ ‡ç­¾
+# UI¡ªµÚËÄµ¯£¬ÓĞÈ¤µÄÁĞ±í±êÇ©
 
-###ä¸€ã€åŠŸèƒ½ï¼š
-####1ã€æŒ‰å§“æ°é¦–å­—æ¯å°†åˆ—è¡¨åˆ†ç»„ã€‚
-####2ã€æ»‘åŠ¨æ—¶ï¼Œåˆ†ç»„æ ‡ç­¾çš„å˜åŒ–ã€‚
-####3ã€æ ¹æ®æ±‰å­—å¾—åˆ°åœ†å½¢å¤´åƒã€‚
+##Ò»¡¢¹¦ÄÜ£º
+####1¡¢°´ĞÕÊÏÊ××ÖÄ¸½«ÁĞ±í·Ö×é¡£
+####2¡¢»¬¶¯Ê±£¬·Ö×é±êÇ©µÄÖØ»æ¡£
 
-###äºŒã€å¾®ä¿¡å…¬ä¼—å·ï¼š
-**æ¬¢è¿å…³æ³¨å¾®ä¿¡å…¬ä¼—å·ï¼Œäº†è§£æ›´å¤šã€‚**
-**å¾®ä¿¡å…¬ä¼—å·ï¼šjike_android**
+##¶ş¡¢Î¢ĞÅ¹«ÖÚºÅ£º
+**¹Ø×¢Î¢ĞÅ¹«ÖÚºÅ£¬»ñÈ¡ÃÜÂë£¬ÁË½â¸ü¶à¡£**
+**Î¢ĞÅ¹«ÖÚºÅ£ºjike_android**
+![¹«ÖÚºÅ](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
 
-![å…¬ä¼—å·](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
+##Èı¡¢Ğ§¹ûÍ¼£º
+![Ğ§¹ûÍ¼](https://github.com/wch0620/StatusBar/raw/master/gif/label.gif)
 
-###ä¸‰ã€æ•ˆæœå›¾ï¼š
-![æ•ˆæœå›¾](https://github.com/wch0620/LabelListView/raw/label_listview/gif/label.gif)
+###ËÄ¡¢ÊµÏÖ£º
 
-###å››ã€å…³é”®ä»£ç ï¼š
+###1. Êı¾İµÄ»ñÈ¡£º
+####Êµ¼ÊÏîÄ¿ÖĞ£¬ĞèÒªµÃµ½ËùÓĞÁªÏµÈËµÄĞÕµÄÊ××ÖÄ¸£¬È»ºó½øĞĞ·Ö¶Î£¬µÃµ½ËùÓĞµÄ±êÇ©¡£ÎÒÕâ±ß²¢Ã»ÓĞ×öÊı¾İ¿â£¬Ö»ÊÇÄ£ÄâÁËÊı¾İ¡£
 
-####ç¡è§‰ï¼Œæ˜å¤©å†æã€‚ã€‚ã€‚
+```
+		int length = Constant.LAST_NAME.length;
+		mDisablePositions = new int[Constant.GROUP_LABELS.length];
+		for (int i = 0; i < length; i++) {
+			int size = (int) (Math.random() * 10 + 1);
+			mDisablePositions[i + 1] = count;
+			count += size;
+			
+			for(int j = 0; j < size; j++) {
+				int nameIndex = (int) (Math.random() * Constant.FIRST_NAME.length);
+				mList.add(Constant.LAST_NAME[i] + Constant.FIRST_NAME[nameIndex]);
+			}
+		}
+```
+####mDisablePositions±£´æÃ¿Ò»¸öĞÂµÄ±êÇ©µÄÎ»ÖÃ¡£
+###2¡¢ÊµÏÖÁĞ±í£º
+####Õâ¸öºÜ¼òµ¥£¬Ã»Ê²Ã´¿ÉËµµÄ£¬Ö»ĞèÒª×¢ÒâÔÚÃ¿Ò»¸ö±êÇ©µÄ¿ªÊ¼ÏÔÊ¾±êÇ©¼´¿É¡£¾ÍÊÇmDisablePositionsÊı×éµÄÎ»ÖÃÏÔÊ¾±êÇ©¡£
 
+####ÓÃ¶ş·Ö·¨¿ìËÙ¼ìÑéµ±Ç°posÊ®·ÖÔÚmDisablePositionsÊı×éÖĞ¡£
+
+```
+        int index = Arrays.binarySearch(mDisablePositions, position);
+        if (index >= 0) {
+            return Constant.GROUP_LABELS[index];
+        } else {
+            return "";
+        }
+```
+
+###3¡¢ÁĞ±í»¬¶¯£º
+
+####Ö÷ÒªÊÇ¾àÀëµÄ¼ÆËã¡£
+```
+View child = getChildAt(position - getFirstVisiblePosition());
+if (child == null) {
+	return;
+	}
+int childTop = child.getTop();
+int deltaOffset = mListViewBaseOffsetTop - childTop;
+```
