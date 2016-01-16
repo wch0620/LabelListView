@@ -1,21 +1,22 @@
-# UI�����ĵ�����Ȥ���б���ǩ
+# UI—第四弹，有趣的列表标签
 
-##һ�����ܣ�
-####1������������ĸ���б����顣
-####2������ʱ�������ǩ���ػ档
+##一、功能：
+####1、按姓氏首字母将列表分组。
+####2、滑动时，分组标签的重绘。
 
-##����΢�Ź��ںţ�
-**��ע΢�Ź��ںţ���ȡ���룬�˽���ࡣ**
-**΢�Ź��ںţ�jike_android**
-![���ں�](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
+##二、微信公众号：
+**关注微信公众号，获取密码，了解更多。**
+**微信公众号：jike_android**
 
-##����Ч��ͼ��
-![Ч��ͼ](https://github.com/wch0620/StatusBar/raw/master/gif/label.gif)
+![公众号](https://github.com/wch0620/StatusBar/raw/master/WeiXin/qrcode.jpg)
 
-###�ġ�ʵ�֣�
+##三、效果图：
+![效果图](https://github.com/wch0620/LabelListView/raw/label_listview/gif/label_listview.gif)
 
-###1. ���ݵĻ�ȡ��
-####ʵ����Ŀ�У���Ҫ�õ�������ϵ�˵��յ�����ĸ��Ȼ����зֶΣ��õ����еı�ǩ������߲�û�������ݿ⣬ֻ��ģ�������ݡ�
+###四、实现：
+
+###1. 数据的获取：
+####实际项目中，需要得到所有联系人的姓的首字母，然后进行分段，得到所有的标签。我这边并没有做数据库，只是模拟了数据。
 
 ```
 		int length = Constant.LAST_NAME.length;
@@ -31,11 +32,11 @@
 			}
 		}
 ```
-####mDisablePositions����ÿһ���µı�ǩ��λ�á�
-###2��ʵ���б���
-####����ܼ򵥣�ûʲô��˵�ģ�ֻ��Ҫע����ÿһ����ǩ�Ŀ�ʼ��ʾ��ǩ���ɡ�����mDisablePositions�����λ����ʾ��ǩ��
+####mDisablePositions保存每一个新的标签的位置。
+###2、实现列表：
+####这个很简单，没什么可说的，只需要注意在每一个标签的开始显示标签即可。就是mDisablePositions数组的位置显示标签。
 
-####�ö��ַ����ټ��鵱ǰposʮ����mDisablePositions�����С�
+####用二分法快速检验当前pos十分在mDisablePositions数组中。
 
 ```
         int index = Arrays.binarySearch(mDisablePositions, position);
@@ -46,9 +47,9 @@
         }
 ```
 
-###3���б�������
+###3、列表滑动：
 
-####��Ҫ�Ǿ���ļ��㡣
+####主要是距离的计算。
 ```
 View child = getChildAt(position - getFirstVisiblePosition());
 if (child == null) {
